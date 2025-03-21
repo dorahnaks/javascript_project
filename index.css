@@ -1,0 +1,64 @@
+body{
+    background-color: rgb(198, 212, 216);
+}
+h2{
+    text-align: center;
+    margin: 5%;
+    background-color: white;
+    padding: 2%;
+}
+img{
+    width: 300px;
+    height: 300px;
+}
+.books{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 10%;
+    margin-bottom: 5%;
+}
+p{
+    font-size: 20px;
+    color: blue;
+}
+h3{
+    font-size: 18px;
+    color: blue;
+}
+p,h3{
+    text-align: center;
+}
+.nav nav-tabs{
+       gap: 5%;
+}
+ul{
+    gap: 10%;
+    font-size: 25px;
+}
+a{
+    text-decoration: none;
+}
+li:hover{
+    background-color:white;
+    padding: 5px;
+}
+button:hover{
+      border-radius: 2%;
+      border-color: black;
+      background-color: rgb(78, 224, 235);
+}
+.book{
+    background-color: white;
+    padding: 20px;
+    border-radius: 3rem;
+    border: 2px solid black;
+    
+}
+hr{
+    size: 2rem;
+}
+.form-control{
+     width: 700px;
+}
+
