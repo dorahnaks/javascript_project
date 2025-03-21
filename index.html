@@ -1,66 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BOOK MANGEMENT SYSTEM</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./index.js">
-    <link rel="stylesheet" href="./index.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./index.css">
 </head>
 <body>
-    <div class="book_section">
-        <div class="box-1">
-            <h2>📚 BOOK MANAGEMENT SYSTEM</h2>
-            <button class="btn btn-info active">+ Add Book</button>
-        </div><br><br>
-
-        <div class="btn-group">
-            <input type="text" class="form-control mb-4" placeholder="search....">
-            <button class="btn btn-primary mb-4" type="button">SEARCH</button>
-       </div>
-
-        <h1>BOOK LIST</h1> <br>
-
-        <ul class="nav nav-tabs">
-            <li class="active"><a data-bs-toggle="tab" href="#allBooks">All Books</a></li>
-            <li class="nav-item"><a data-bs-toggle="tab" href="#favorites">Favorites</a></li>
-            <li class="nav-item"><a  data-bs-toggle="tab"href="#unread">Unread</a></li>
-            <li class="nav-item"><a data-bs-toggle="tab" href="#read">Read</a></li>
-        </ul>
-        <hr>
-
-
-        <section class="books">
-            <div class="book">
-                <img src="./4069338.jpg" alt="">
-            
-                <p>Introduction to JavaScript</p>
-                
-                <h3>Robert Johns</h3>
-                <button type="button" class="btn btn-danger">Delete</button>
-                <button type="button" class="btn btn-info">Edit</button>
-                <button type="button" class="btn btn-success">Unfavourite</button>
-            </div>
-            <div class="book">
-                <img src="./8662803.jpg" alt="">
-                <p>Understanding JavaScript</p>
-                <h3>Kirsten Delia</h3>
-                <button type="button" class="btn btn-danger">Delete</button>
-                <button type="button" class="btn btn-info">Edit</button>
-                <button type="button" class="btn btn-success">Unfavourite</button>
-            </div>
-            <div class="book">
-                <img src="./OIHFF30.jpg" alt="">
-                <p>Basic JavaScript</p>
-                <h3>Martha Miles</h3>
-                <button type="button" class="btn btn-danger">Delete</button>
-                <button type="button" class="btn btn-info">Edit</button>
-                <button type="button" class="btn btn-success">Unfavourite</button>
-            </div>
-        </section>
-
-    </div>
-    
+  <div class="container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <h2>📖 Library</h2>
+      <button onclick="filterBooks('all')">📚 All Books</button>
+      <button onclick="filterBooks('favorites')">⭐ Favorites</button>
+      <button onclick="filterBooks('unread')">📖 Unread</button>
+      <button onclick="filterBooks('read')">✅ Read</button> 
+    </aside>
+  
+    <!-- Main Content -->
+    <main class="content">
+      <h1>Book Management System</h1>
+  
+      <!-- Add Book Form -->
+      <div class="form-container">
+        <input type="text" id="bookTitle" placeholder="Book Title">
+        <input type="text" id="bookAuthor" placeholder="Author">
+  
+        <select id="bookGenre">
+          <option value="">Select Genre</option>
+          <option value="Fiction">Fiction</option>
+          <option value="Non-Fiction">Non-Fiction</option>
+          <option value="Fantasy">Fantasy</option>
+          <option value="Biography">Biography</option>
+        </select>
+  
+        <select id="bookStatus">
+          <option value="">Select Status</option>
+          <option value="Read">Read</option>
+          <option value="Unread">Unread</option>
+          <option value="Reading">Reading</option>
+        </select>
+  
+        <input type="file" id="bookImage">
+        
+        <label for="favorite">Favorite</label>
+        <input type="checkbox" id="favorite">
+  
+        <button onclick="addBook()">Add Book</button>
+      </div>
+  
+      <!-- Search Bar -->
+      <input type="text" id="search" placeholder="🔍 Search books..." oninput="searchBooks()">
+  
+      <!-- Book List -->
+      <div id="bookList"></div>
+    </main>
+  </div>
+  <script src="./index.js"></script>
 </body>
 </html>
