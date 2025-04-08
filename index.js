@@ -1,28 +1,26 @@
 let books = []; // Initialize an empty array to store books
 
 function addBook() {
-  const title = document.getElementById('bookTitle').value; 
+  const title = document.getElementById('bookTitle').value;
   const author = document.getElementById('bookAuthor').value;
   const genre = document.getElementById('bookGenre').value;
   const status = document.getElementById('bookStatus').value;
   const favorite = document.getElementById('favorite').checked;
   
-  let image = document.getElementById('bookImage').files[0]; // Get the uploaded image file
-  // .files is a FileList object that contains the selected files. [0] accesses the first file in the list.
-
+  let image = document.getElementById('bookImage').files[0];
   if (image) {
     const reader = new FileReader();
     reader.onloadend = function () {
-      const imageUrl = reader.result; // Get the file URL
+      const imageUrl = reader.result;
       addToBooks(title, author, genre, status, imageUrl, favorite);
     };
-    reader.readAsDataURL(image); // Convert the image file to a base64 string
+    reader.readAsDataURL(image);
   } else {
-    // Use default image if no image is uploaded
-    const defaultImage = "https://via.placeholder.com/150";
+    const defaultImage = "./default_image.jpg"; // Local image
     addToBooks(title, author, genre, status, defaultImage, favorite);
   }
 }
+
 // reader is a built-in JavaScript object that reads the contents of files stored on the user's computer.
 // by reading the file contents, it allows you to display the image in the book list.
 
@@ -76,11 +74,6 @@ function addToBooks(title, author, genre, status, image, favorite) {
   }
 } // Save books to localStorage whenever a book is added
 
-function deleteBook(index) {
-  books.splice(index, 1);
-  saveBooksToLocalStorage(); // Save to localStorage
-  renderBooks();
-} // Save books to localStorage whenever a book is deleted
 
 function editBook(index) {
   const book = books[index];
@@ -97,6 +90,12 @@ function editBook(index) {
     renderBooks();
   }
 } // Save books to localStorage whenever a book is edited
+
+function deleteBook(index) {
+  books.splice(index, 1);
+  saveBooksToLocalStorage(); // Save to localStorage
+  renderBooks();
+} // Save books to localStorage whenever a book is deleted
 
 // Load books when the page is loaded
 window.onload = loadBooksFromLocalStorage;
@@ -115,16 +114,16 @@ function renderBooks() {
     
     bookDiv.innerHTML = `
       <div class="book-info">
-        <img src="${book.image}" alt="${book.title}" class="book-image">
-        <div>
-          <span class="book-title">${book.title} by ${book.author}</span>
-          <p><strong>Genre:</strong> ${book.genre}</p>
-          <p><strong>Status:</strong> ${book.status}</p>
-          <p><strong>Favorite:</strong> ${book.favorite ? 'Yes' : 'No'}</p>
-        </div>
+      <img src="${book.image}" alt="${book.title}" class="book-image">
+      <div>
+      <span class="book-title">${book.title} by ${book.author}</span>
+      <p><strong>Genre:</strong> ${book.genre}</p>
+      <p><strong>Status:</strong> ${book.status}</p>
+      <p><strong>Favorite:</strong> ${book.favorite ? 'Yes' : 'No'}</p>
       </div>
-      <button onclick="deleteBook(${index})">Delete</button>
-      <button onclick="editBook(${index})">Edit</button>
+      </div>
+      <button onclick="editBook(${index})" style="background-color: green; color: white;">Edit</button>
+      <button onclick="if(confirm('Are you sure you want to delete this book?')) deleteBook(${index})">Delete</button> 
     `;
     bookList.appendChild(bookDiv);
   });
