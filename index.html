@@ -9,7 +9,7 @@
 </head>
 <body>
   <div class="container">
-    <!-- Sidebar Navigation -->
+    
     <aside class="sidebar">
       <h2>📖 Library</h2>
       <button onclick="filterBooks('all')">📚 All Books</button>
@@ -18,11 +18,11 @@
       <button onclick="filterBooks('read')">✅ Read</button>
     </aside>
   
-    <!-- Main Content -->
+  
     <main class="content">
       <h1>📚 Book Management System</h1>
   
-      <!-- Add Book Form -->
+      
       <div class="form-container">
         <input type="text" id="bookTitle" placeholder="Book Title">
         <input type="text" id="bookAuthor" placeholder="Author">
@@ -31,6 +31,7 @@
         <select id="bookGenre">
           <option value="">Select Genre</option> 
           <option value="Biography">Biography</option>
+          <option value="educational">Educational</option>
           <option value="Fiction">Fiction</option>
           <option value="Non-Fiction">Non-Fiction</option>
           <option value="Fantasy">Fantasy</option>
@@ -52,10 +53,10 @@
         <button onclick="addBook()">+ Add Book</button>
       </div>
   
-      <!-- Search Bar -->
+      
       <input type="text" id="search" placeholder="🔍 Search books..." oninput="searchBooks()">
   
-      <!-- Book List -->
+
       <div id="bookList"></div>
     </main>
   </div>

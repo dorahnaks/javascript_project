@@ -67,8 +67,9 @@ function renderBooks() {
           <p><strong>Favorite:</strong> ${book.favorite ? 'Yes' : 'No'}</p>
         </div>
       </div>
+      <button onclick="editBook(${index})" style="background-color: green; color: white;">Edit</button>
       <button onclick="deleteBook(${index})">Delete</button>
-      <button onclick="editBook(${index})">Edit</button>
+      
     `;
     bookList.appendChild(bookDiv);
   });
@@ -82,6 +83,7 @@ function deleteBook(index) {
 function editBook(index) {
   const book = books[index];
   const title = prompt('Edit title:', book.title);
+  
   const author = prompt('Edit author:', book.author);
   const genre = prompt('Edit genre:', book.genre);
   const status = prompt('Edit status:', book.status);
@@ -232,4 +234,8 @@ window.onload = loadBooksFromLocalStorage;
 // window.onload = function() is used to ensure that the loadBooksFromLocalStorage function is called when the page is fully loaded.
 // This will load any previously saved books from localStorage and render them on the page.
 // This ensures that the user's data is preserved even after refreshing or closing the browser.
+// Set a default image for books
+ 
+
+
 
