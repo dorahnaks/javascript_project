@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Book Management System</title>
   <link rel="stylesheet" href="./index.css">
 </head>
 <body>
@@ -15,27 +14,25 @@
       <button onclick="filterBooks('all')">📚 All Books</button>
       <button onclick="filterBooks('favorites')">⭐ Favorites</button>
       <button onclick="filterBooks('unread')">📖 Unread</button>
-      <button onclick="filterBooks('read')">✅ Read</button>
+      <button onclick="filterBooks('read');">✅ Read</button> 
     </aside>
   
   
     <main class="content">
-      <h1>📚 Book Management System</h1>
+      <h1>Book Management System</h1>
   
       
       <div class="form-container">
         <input type="text" id="bookTitle" placeholder="Book Title">
         <input type="text" id="bookAuthor" placeholder="Author">
   
-        
-        <select id="bookGenre">
-          <option value="">Select Genre</option> 
-          <option value="Biography">Biography</option>
-          <option value="educational">Educational</option>
+        <select id="bookGenre"
           <option value="Fiction">Fiction</option>
           <option value="Non-Fiction">Non-Fiction</option>
           <option value="Fantasy">Fantasy</option>
-          
+          <option value="Biography">Biography</option>
+          <option value="Biography">Romance</option>
+          <option value="Biography">Horror</option>
         </select>
   
         <select id="bookStatus">
@@ -50,7 +47,7 @@
         <label for="favorite">Favorite</label>
         <input type="checkbox" id="favorite">
   
-        <button onclick="addBook()">+ Add Book</button>
+        <button onclick="addBook()">Add Book</button>
       </div>
   
       
