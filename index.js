@@ -29,6 +29,8 @@ function addBook() {
 // FileReader is used to read the uploaded image file and convert it to a base64 string for display.
 // it converts images to a format that can be displayed in the browser.
 
+// Add book without image upload
+
 
 // Saving books to localStorage
 function saveBooksToLocalStorage() {
