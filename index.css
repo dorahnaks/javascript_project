@@ -147,7 +147,7 @@ h1 {
 
 .book-item:hover {
   transform: scale(1.05);
-  background: #00695c; /* Dark teal hover effect */
+  background:darksalmon; 
 }
 
 .book-item img {
