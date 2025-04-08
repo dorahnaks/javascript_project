@@ -17,6 +17,7 @@ body {
   width: 100%;
   max-width: 1400px;
   min-height: 100vh;
+  height: 100%;
 }
 
 /* Sidebar */
@@ -29,7 +30,7 @@ body {
   flex-direction: column;
   gap: 20px;
   position: sticky;
-  top: 0;
+  top: 0px; /* Ensure proper sticky behavior */
   height: 100vh;
   box-shadow: 5px 0 15px rgba(0, 0, 0, 0.1);
 }
