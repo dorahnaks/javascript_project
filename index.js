@@ -72,12 +72,13 @@ function addToBooks(title, author, genre, status, image, favorite) {
   } else {
     alert('Please fill out all fields.');
   }
-} // Save books to localStorage whenever a book is added
+
 
 
 function editBook(index) {
   const book = books[index];
   const title = prompt('Edit title:', book.title);
+  
   const author = prompt('Edit author:', book.author);
   const genre = prompt('Edit genre:', book.genre);
   const status = prompt('Edit status:', book.status);
@@ -194,3 +195,4 @@ function filterBooks(filter) {
 
   renderFilteredBooks(filteredBooks);
 }
+

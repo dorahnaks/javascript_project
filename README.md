@@ -14,3 +14,4 @@ The Book Management System is a comprehensive web application tailored for effic
 - **Frontend**: HTML, CSS, Vanilla JavaScript
 - **Backend**: JavaScript
 - **Database**: localStorage API
+
