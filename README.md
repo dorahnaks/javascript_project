@@ -11,7 +11,7 @@ The Book Management System is a comprehensive web application tailored for effic
 - Responsive design for optimal usability across devices.
 
 ## Technologies Used
-- **Frontend**: HTML, CSS, Vanilla JavaScript
+- **Frontend**: HTML, CSS, JavaScript
 - **Backend**: JavaScript
 - **Database**: localStorage API
 
