@@ -6,8 +6,10 @@ function addBook() {
   const genre = document.getElementById('bookGenre').value;
   const status = document.getElementById('bookStatus').value;
   const favorite = document.getElementById('favorite').checked;
-  
+
   let image = document.getElementById('bookImage').files[0];
+
+
   if (image) {
     const reader = new FileReader();
     reader.onloadend = function () {
@@ -17,13 +19,13 @@ function addBook() {
     reader.readAsDataURL(image);
   } else {
     const defaultImage = "./default_image.jpg"; // Local image
+
     addToBooks(title, author, genre, status, defaultImage, favorite);
   }
 }
 
 // reader is a built-in JavaScript object that reads the contents of files stored on the user's computer.
 // by reading the file contents, it allows you to display the image in the book list.
-
 // FileReader is used to read the uploaded image file and convert it to a base64 string for display.
 // it converts images to a format that can be displayed in the browser.
 
@@ -44,8 +46,7 @@ function saveBooksToLocalStorage() {
 // Loading books from localStorage
 function loadBooksFromLocalStorage() {
   const storedBooks = localStorage.getItem('books');
-  if (storedBooks) {
-    books = JSON.parse(storedBooks);
+  if (storedBooks) {books = JSON.parse(storedBooks);
     renderBooks();
   }
 }
@@ -64,7 +65,7 @@ function addToBooks(title, author, genre, status, image, favorite) {
       image,
       favorite,
     };
-    
+
     books.push(newBook);
     saveBooksToLocalStorage(); // Save to localStorage
     renderBooks();
@@ -72,13 +73,13 @@ function addToBooks(title, author, genre, status, image, favorite) {
   } else {
     alert('Please fill out all fields.');
   }
+} // Save books to localStorage whenever a book is added
 
 
 
 function editBook(index) {
   const book = books[index];
   const title = prompt('Edit title:', book.title);
-  
   const author = prompt('Edit author:', book.author);
   const genre = prompt('Edit genre:', book.genre);
   const status = prompt('Edit status:', book.status);
@@ -112,7 +113,7 @@ function renderBooks() {
   books.forEach((book, index) => {
     const bookDiv = document.createElement('div');
     bookDiv.classList.add('book-item');
-    
+
     bookDiv.innerHTML = `
       <div class="book-info">
       <img src="${book.image}" alt="${book.title}" class="book-image">
@@ -121,6 +122,7 @@ function renderBooks() {
       <p><strong>Genre:</strong> ${book.genre}</p>
       <p><strong>Status:</strong> ${book.status}</p>
       <p><strong>Favorite:</strong> ${book.favorite ? 'Yes' : 'No'}</p>
+
       </div>
       </div>
       <button onclick="editBook(${index})" style="background-color: green; color: white;">Edit</button>
@@ -149,7 +151,7 @@ function renderFilteredBooks(filteredBooks) {
   filteredBooks.forEach((book, index) => {
     const bookDiv = document.createElement('div');
     bookDiv.classList.add('book-item');
-    
+
     bookDiv.innerHTML = `
       <div class="book-info">
         <img src="${book.image}" alt="${book.title}" class="book-image">
@@ -166,7 +168,6 @@ function renderFilteredBooks(filteredBooks) {
     bookList.appendChild(bookDiv);
   });
 }
-
 function clearInputs() {
   document.getElementById('bookTitle').value = '';
   document.getElementById('bookAuthor').value = '';
@@ -175,7 +176,6 @@ function clearInputs() {
   document.getElementById('bookImage').value = '';
   document.getElementById('favorite').checked = false;
 }
-
 function filterBooks(filter) {
   let filteredBooks = [];
 
@@ -195,4 +195,3 @@ function filterBooks(filter) {
 
   renderFilteredBooks(filteredBooks);
 }
-

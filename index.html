@@ -18,15 +18,18 @@
     </aside>
   
   
+    <!-- Main Content -->
     <main class="content">
       <h1>Book Management System</h1>
-  
-      
+
+      <!-- Add Book Form -->
       <div class="form-container">
         <input type="text" id="bookTitle" placeholder="Book Title">
         <input type="text" id="bookAuthor" placeholder="Author">
-  
-        <select id="bookGenre"
+
+        <select id="bookGenre">
+          <option value="">Select Genre</option>
+          <option value="Biography">Educational</option>
           <option value="Fiction">Fiction</option>
           <option value="Non-Fiction">Non-Fiction</option>
           <option value="Fantasy">Fantasy</option>
@@ -34,25 +37,26 @@
           <option value="Biography">Romance</option>
           <option value="Biography">Horror</option>
         </select>
-  
+
         <select id="bookStatus">
           <option value="">Select Status</option>
           <option value="Read">Read</option>
           <option value="Unread">Unread</option>
           <option value="Reading">Reading</option>
         </select>
-  
+
         <input type="file" id="bookImage">
-        
+
         <label for="favorite">Favorite</label>
         <input type="checkbox" id="favorite">
-  
+
         <button onclick="addBook()">Add Book</button>
       </div>
-  
-      
+
+      <!-- Search Bar -->
       <input type="text" id="search" placeholder="🔍 Search books..." oninput="searchBooks()">
-  
+
+
 
       <div id="bookList"></div>
     </main>
