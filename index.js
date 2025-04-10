@@ -6,8 +6,10 @@ function addBook() {
   const genre = document.getElementById('bookGenre').value;
   const status = document.getElementById('bookStatus').value;
   const favorite = document.getElementById('favorite').checked;
-  
+
   let image = document.getElementById('bookImage').files[0];
+
+
   if (image) {
     const reader = new FileReader();
     reader.onloadend = function () {
@@ -17,6 +19,7 @@ function addBook() {
     reader.readAsDataURL(image);
   } else {
     const defaultImage = "./default_image.jpg"; // Local image
+
     addToBooks(title, author, genre, status, defaultImage, favorite);
   }
 }
@@ -64,7 +67,7 @@ function addToBooks(title, author, genre, status, image, favorite) {
       image,
       favorite,
     };
-    
+
     books.push(newBook);
     saveBooksToLocalStorage(); // Save to localStorage
     renderBooks();
@@ -72,13 +75,13 @@ function addToBooks(title, author, genre, status, image, favorite) {
   } else {
     alert('Please fill out all fields.');
   }
+} // Save books to localStorage whenever a book is added
 
 
 
 function editBook(index) {
   const book = books[index];
   const title = prompt('Edit title:', book.title);
-  
   const author = prompt('Edit author:', book.author);
   const genre = prompt('Edit genre:', book.genre);
   const status = prompt('Edit status:', book.status);
@@ -104,7 +107,6 @@ window.onload = loadBooksFromLocalStorage;
 // This will load any previously saved books from localStorage and render them on the page.
 // This ensures that the user's data is preserved even after refreshing or closing the browser.
 
-
 function renderBooks() {
   const bookList = document.getElementById('bookList');
   bookList.innerHTML = '';
@@ -112,7 +114,7 @@ function renderBooks() {
   books.forEach((book, index) => {
     const bookDiv = document.createElement('div');
     bookDiv.classList.add('book-item');
-    
+
     bookDiv.innerHTML = `
       <div class="book-info">
       <img src="${book.image}" alt="${book.title}" class="book-image">
@@ -121,6 +123,7 @@ function renderBooks() {
       <p><strong>Genre:</strong> ${book.genre}</p>
       <p><strong>Status:</strong> ${book.status}</p>
       <p><strong>Favorite:</strong> ${book.favorite ? 'Yes' : 'No'}</p>
+
       </div>
       </div>
       <button onclick="editBook(${index})" style="background-color: green; color: white;">Edit</button>
@@ -149,7 +152,7 @@ function renderFilteredBooks(filteredBooks) {
   filteredBooks.forEach((book, index) => {
     const bookDiv = document.createElement('div');
     bookDiv.classList.add('book-item');
-    
+
     bookDiv.innerHTML = `
       <div class="book-info">
         <img src="${book.image}" alt="${book.title}" class="book-image">
@@ -160,13 +163,13 @@ function renderFilteredBooks(filteredBooks) {
           <p><strong>Favorite:</strong> ${book.favorite ? 'Yes' : 'No'}</p>
         </div>
       </div>
-      <button onclick="deleteBook(${index})">Delete</button>
-      <button onclick="editBook(${index})">Edit</button>
+      <button onclick="editBook(${index})" style="background-color: green; color: white;">Edit</button>
+      <button onclick="if(confirm('Are you sure you want to delete this book?')) deleteBook(${index})">Delete</button> 
     `;
+
     bookList.appendChild(bookDiv);
   });
 }
-
 function clearInputs() {
   document.getElementById('bookTitle').value = '';
   document.getElementById('bookAuthor').value = '';
@@ -195,4 +198,6 @@ function filterBooks(filter) {
 
   renderFilteredBooks(filteredBooks);
 }
+
+
 
