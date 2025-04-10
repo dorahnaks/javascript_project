@@ -7,6 +7,7 @@ function addBook() {
   const genre = document.getElementById('bookGenre').value;
   const status = document.getElementById('bookStatus').value;
   const favorite = document.getElementById('favorite').checked;
+  const leastfavourite = document.getElementById('leastfavourite').checked;
   
   let image = document.getElementById('bookImage').files[0]; // Get the uploaded image file
   
@@ -39,6 +40,7 @@ function addToBooks(title, author, genre, status, image, favorite) {
       status,
       image,
       favorite,
+      
     };
     
     books.push(newBook);
@@ -65,6 +67,7 @@ function renderBooks() {
           <p><strong>Genre:</strong> ${book.genre}</p>
           <p><strong>Status:</strong> ${book.status}</p>
           <p><strong>Favorite:</strong> ${book.favorite ? 'Yes' : 'No'}</p>
+          
         </div>
       </div>
       <button onclick="editBook(${index})" style="background-color: green; color: white;">Edit</button>
@@ -82,6 +85,7 @@ function deleteBook(index) {
 
 function editBook(index) {
   const book = books[index];
+  
   const title = prompt('Edit title:', book.title);
   
   const author = prompt('Edit author:', book.author);
@@ -127,8 +131,9 @@ function renderFilteredBooks(filteredBooks) {
           <p><strong>Favorite:</strong> ${book.favorite ? 'Yes' : 'No'}</p>
         </div>
       </div>
+      <button onclick="editBook(${index})"style="background-color:green; color:white;":>Edit</button>
       <button onclick="deleteBook(${index})">Delete</button>
-      <button onclick="editBook(${index})">Edit</button>
+    
     `;
     bookList.appendChild(bookDiv);
   });
