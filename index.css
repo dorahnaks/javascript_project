@@ -1,31 +1,30 @@
 body {
   font-family: 'Poppins', sans-serif;
   background: #f5f5f5; 
-  color: #333; 
+  color: #333;
   margin: 0;
   display: flex;
-  justify-content: center;
 }
-
 
 .container {
   display: flex;
   width: 100%;
   max-width: 1400px;
   min-height: 100vh;
+  height: 100%;
 }
 .sidebar {
   width: 20%;
-  background: #34495e; 
+  background: #34495e;
   color: white;
   padding: 30px 20px;
   display: flex;
   flex-direction: column;
   gap: 20px;
   position: sticky;
-  top: 0;
+  top: 0px; 
   height: 100vh;
-
+  /* vh stands for viewport height */
 }
 
 .sidebar button {
@@ -44,9 +43,11 @@ body {
 }
 
 .sidebar button:hover {
-  background: rgba(255, 255, 255, 0.);
-  transform: translateX(2px 5px);
-}
+  background: rgba(255, 255, 255, 0.3);
+} 
+/* background: rgba(255, 255, 255, 0.3) is a semi-transparent white background. 
+0.3 is the opacity level. 255 is the maximum value for red, green, and blue. */
+
 
 
 
@@ -140,8 +141,8 @@ h1 {
 }
 
 .book-item:hover {
-  transform: scale(1.05);
-  background:#62f36e; 
+  background: #62f36e;
+
 }
 
 .book-item img {
@@ -167,12 +168,8 @@ h1 {
   margin-top: 10px;
 }
 
-.book-item button:first-child {
-  background: #ffcc00;
-}
-
 .book-item button:last-child {
-  background: red; 
+  background:#dc3545;
   color: white;
 }
 
@@ -183,21 +180,21 @@ button {
 }
 
 button::before {
-  content: '';
-  position: absolute;
+  content: ''; 
+  position: absolute; 
   top: 0;
   left: 50%;
   width: 300%;
   height: 100%;
   background-color: rgba(255, 255, 255, 0.1);
-  transition: all 0.4s ease;
-  transform: translateX(-50%) translateY(-50%) scale(0);
+  transition: all 0.4s ease; /* transition duration and easing function */
+  transform: translateX(-50%) translateY(-50%) scale(0); 
   border-radius: 50%;
 }
-
+/* transform: translateX(-50%) translateY(-50%) scale(0) is used to position the element at the center of its parent and scale it down to 0. */
 button:hover::before {
   transform: translateX(-50%) translateY(-50%) scale(1);
-}
+}/*
 
 @media (max-width: 768px) {
   .container {

@@ -30,7 +30,7 @@ function addBook() {
 // FileReader is a built-in JavaScript object that allows you to read the contents of files (like images) asynchronously.
 
 
-function addToBooks(title, author, genre, status, image, favorite) {
+function addToBooks(title, author, genre, status, image, favorite,leastfavourite) {
   if (title && author && genre && status) {
     const newBook = {
       id: crypto.randomUUID(),
@@ -40,7 +40,7 @@ function addToBooks(title, author, genre, status, image, favorite) {
       status,
       image,
       favorite,
-      
+      leastfavourite,
     };
     
     books.push(newBook);
