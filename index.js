@@ -1,13 +1,13 @@
 let books = [];// Initialize an empty array to store books
 // This array will hold all the book objects that are added by the user.
 
+
 function addBook() {
   const title = document.getElementById('bookTitle').value;
   const author = document.getElementById('bookAuthor').value;
   const genre = document.getElementById('bookGenre').value;
   const status = document.getElementById('bookStatus').value;
   const favorite = document.getElementById('favorite').checked;
-  const leastfavourite = document.getElementById('leastfavourite').checked;
   
   let image = document.getElementById('bookImage').files[0]; // Get the uploaded image file
   
@@ -30,7 +30,7 @@ function addBook() {
 // FileReader is a built-in JavaScript object that allows you to read the contents of files (like images) asynchronously.
 
 
-function addToBooks(title, author, genre, status, image, favorite,leastfavourite) {
+function addToBooks(title, author, genre, status, image, favorite) {
   if (title && author && genre && status) {
     const newBook = {
       id: crypto.randomUUID(),
@@ -40,23 +40,28 @@ function addToBooks(title, author, genre, status, image, favorite,leastfavourite
       status,
       image,
       favorite,
-      leastfavourite,
-    };
+};
     
     books.push(newBook);
     renderBooks();
     clearInputs();
+    
   } else {
     alert('Please fill out all fields.');
   }
 }
 
+
 function renderBooks() {
+  
   const bookList = document.getElementById('bookList');
   bookList.innerHTML = '';
+  
 
   books.forEach((book, index) => {
+    
     const bookDiv = document.createElement('div');
+    
     bookDiv.classList.add('book-item');
     
     bookDiv.innerHTML = `
@@ -64,7 +69,9 @@ function renderBooks() {
         <img src="${book.image}" alt="${book.title}" class="book-image">
         <div>
           <span class="book-title">${book.title} by ${book.author}</span>
+        
           <p><strong>Genre:</strong> ${book.genre}</p>
+          
           <p><strong>Status:</strong> ${book.status}</p>
           <p><strong>Favorite:</strong> ${book.favorite ? 'Yes' : 'No'}</p>
           
@@ -75,11 +82,13 @@ function renderBooks() {
       
     `;
     bookList.appendChild(bookDiv);
+    
   });
 }
 
 function deleteBook(index) {
   books.splice(index, 1);
+  
   renderBooks();
 }
 
@@ -87,7 +96,7 @@ function editBook(index) {
   const book = books[index];
   
   const title = prompt('Edit title:', book.title);
-  
+  //pr
   const author = prompt('Edit author:', book.author);
   const genre = prompt('Edit genre:', book.genre);
   const status = prompt('Edit status:', book.status);
@@ -103,8 +112,10 @@ function editBook(index) {
 
 function searchBooks() {
   const searchTerm = document.getElementById('search').value.toLowerCase();
+  
   const filteredBooks = books.filter(book =>
     book.title.toLowerCase().includes(searchTerm) ||
+    
     book.author.toLowerCase().includes(searchTerm) ||
     book.genre.toLowerCase().includes(searchTerm) ||
     book.status.toLowerCase().includes(searchTerm)
