@@ -8,7 +8,7 @@
 </head>
 <body>
   <div class="container">
-    <!-- Sidebar Navigation -->
+    
     <aside class="sidebar">
       <h2>📖 Library</h2>
       <button onclick="filterBooks('all')">📚 All Books</button>
@@ -17,11 +17,30 @@
       <button onclick="filterBooks('read');">✅ Read</button> 
     </aside>
 
-    <!-- Main Content Area -->
+    <div id="editForm" class="edit-form-modal" style="display: none;">
+      <div class="edit-form-card">
+        <h2>Edit Book</h2>
+        <label>Title <input type="text" id="editTitle" /></label>
+        <label>Author <input type="text" id="editAuthor" /></label>
+        <label>Genre <input type="text" id="editGenre" /></label>
+        <label>Status <input type="text" id="editStatus" /></label>
+        <label>
+        <input type="file" id="editImageFile" accept="image/*">
+        <img id="editImagePreview" src="" style="max-height: 100px; display: none;">
+        </label>
+        <label><input type="checkbox" id="editFavorite" /> Mark as Favorite</label>
+
+        <div class="edit-buttons">
+          <button onclick="saveEdit()" class="save-btn">💾 Save</button>
+          <button onclick="cancelEdit()" class="cancel-btn">❌ Cancel</button>
+        </div>
+      </div>
+    </div>
+
+
     <main class="content">
       <h1>Book Management System</h1>
-
-      <!-- Add Book Form -->
+      
       <div class="form-container">
         <input type="text" id="bookTitle" placeholder="Book Title">
         <input type="text" id="bookAuthor" placeholder="Author">
@@ -49,12 +68,13 @@
 
         <button onclick="addBook()">Add Book</button>
       </div>
-     <!-- Search Bar -->
+  
      <input type="text" id="search" placeholder="🔍 Search books by title, author or genre" oninput="searchBooks()">
 
-     <!-- Book List -->
      <div id="bookList"></div>
    </main>
+
+  
  </div>
  <script src="./index.js"></script>
    

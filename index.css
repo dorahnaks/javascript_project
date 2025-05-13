@@ -1,22 +1,17 @@
 body {
   font-family: 'Poppins', sans-serif;
-  background: #f5f5f5; 
+  background: #f5f5f5;
   color: #333;
   margin: 0;
-  display: flex;
-
 }
-
 
 .container {
   display: flex;
   width: 100%;
   max-width: 1400px;
   min-height: 100vh;
-  height: 100%;
 }
 
-/* Sidebar */
 .sidebar {
   width: 20%;
   background: #34495e;
@@ -26,9 +21,8 @@ body {
   flex-direction: column;
   gap: 20px;
   position: sticky;
-  top: 0px; 
+  top: 0;
   height: 100vh;
-  /* vh stands for viewport height */
 }
 
 .sidebar button {
@@ -40,21 +34,16 @@ body {
   background: rgba(255, 255, 255, 0.1);
   color: white;
   cursor: pointer;
-  transition: 0.3s ease-in-out;
   display: flex;
   align-items: center;
   gap: 10px;
+  transition: background 0.3s;
 }
-
 
 .sidebar button:hover {
   background: rgba(255, 255, 255, 0.3);
-} 
-/* background: rgba(255, 255, 255, 0.3) is a semi-transparent white background. 
-0.3 is the opacity level. 255 is the maximum value for red, green, and blue. */
+}
 
-
-/* Content Area */
 .content {
   flex: 1;
   padding: 40px;
@@ -64,10 +53,8 @@ h1 {
   text-align: center;
   font-size: 2.5em;
   margin-bottom: 20px;
-  color: #333;
 }
 
-/* Form Styling */
 .form-container {
   display: flex;
   flex-wrap: wrap;
@@ -86,7 +73,6 @@ h1 {
   border-radius: 8px;
   border: none;
   font-size: 1em;
-  transition: all 0.3s ease;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -97,20 +83,20 @@ h1 {
 }
 
 .form-container button {
-  background: #28a745; /* Green */
+  background: #28a745;
   color: white;
   width: 100%;
   max-width: 220px;
   cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 .form-container button:hover {
   transform: scale(1.05);
+  background: #1e7e34;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  background: #1e7e34; /* Dark green hover */
 }
 
-/* Search Bar */
 #search {
   width: 100%;
   padding: 14px;
@@ -118,16 +104,14 @@ h1 {
   border: 1px solid #ccc;
   font-size: 1.1em;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  transition: 0.3s;
 }
 
 #search:focus {
   outline: none;
-  border-color: #007bff; /* Blue focus border */
+  border-color: #007bff;
   box-shadow: 0 0 10px rgba(0, 123, 255, 0.3);
 }
 
-/* Book List */
 #bookList {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -135,13 +119,12 @@ h1 {
   margin-top: 20px;
 }
 
-/* Book Card */
 .book-item {
   background: white;
   border-radius: 15px;
   padding: 20px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  transition: 0.3s ease-in-out;
+  transition: 0.3s;
 }
 
 .book-item:hover {
@@ -161,49 +144,41 @@ h1 {
   font-size: 1.3em;
 }
 
-/* Buttons */
 .book-item button {
   padding: 10px 15px;
   border-radius: 8px;
   border: none;
   cursor: pointer;
-  transition: 0.3s;
   margin-top: 10px;
 }
 
-
-
-
-
 .book-item button:last-child {
-  background:#dc3545;
+  background: #dc3545;
   color: white;
 }
 
-/* Interactive Hover Effects */
 button {
   position: relative;
   overflow: hidden;
 }
 
 button::before {
-  content: ''; 
-  position: absolute; 
+  content: '';
+  position: absolute;
   top: 0;
   left: 50%;
   width: 300%;
   height: 100%;
   background-color: rgba(255, 255, 255, 0.1);
-  transition: all 0.4s ease; /* transition duration and easing function */
-  transform: translateX(-50%) translateY(-50%) scale(0); 
   border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: all 0.4s ease;
 }
-/* transform: translateX(-50%) translateY(-50%) scale(0) is used to position the element at the center of its parent and scale it down to 0. */
-button:hover::before {
-  transform: translateX(-50%) translateY(-50%) scale(1);
-}/*
 
-/* Responsive Design */
+button:hover::before {
+  transform: translate(-50%, -50%) scale(1);
+}
+
 @media (max-width: 768px) {
   .container {
     flex-direction: column;
@@ -217,11 +192,6 @@ button:hover::before {
     text-align: center;
   }
 
-  .sidebar button {
-    display: block;
-    width: 100%;
-  }
-
   .content {
     padding: 20px;
   }
@@ -229,4 +199,84 @@ button:hover::before {
   #bookList {
     grid-template-columns: 1fr;
   }
+}
+
+.edit-form-modal {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.edit-form-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 500px;
+  position: absolute; 
+  right: 30%; 
+}
+
+
+.edit-form-card h2 {
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.edit-form-card label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: #555;
+}
+
+.edit-form-card input[type="text"],
+.edit-form-card input[type="url"] {
+  width: 100%;
+  padding: 8px;
+  margin-top: 4px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.edit-form-card input[type="checkbox"] {
+  margin-right: 5px;
+}
+
+.edit-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+} 
+
+.save-btn,
+.cancel-btn {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  color: white;
+}
+
+.save-btn {
+  background-color: #28a745;
+}
+
+.cancel-btn {
+  background-color: #dc3545;
+}
+
+.save-btn:hover {
+  background-color: #218838;
+}
+
+.cancel-btn:hover {
+  background-color: #c82333;
 }

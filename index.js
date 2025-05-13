@@ -79,25 +79,58 @@ function addToBooks(title, author, genre, status, image, favorite) {
 
 
 
+// Editing a book
 function editBook(index) {
   const book = books[index];
-  const title = prompt('Edit title:', book.title);
-  const author = prompt('Edit author:', book.author);
-  const genre = prompt('Edit genre:', book.genre);
-  const status = prompt('Edit status:', book.status);
-  const image = prompt('Edit image URL:', book.image);
-  const favorite = confirm('Is this book a favorite?');
+  editingIndex = index;
 
-  if (title && author && genre && status && image !== null) {
-    books[index] = { ...book, title, author, genre, status, image, favorite };
-    saveBooksToLocalStorage(); // Save to localStorage
+  document.getElementById('editTitle').value = book.title;
+  document.getElementById('editAuthor').value = book.author;
+  document.getElementById('editGenre').value = book.genre;
+  document.getElementById('editStatus').value = book.status;
+  document.getElementById('editFavorite').checked = book.favorite;
+
+  document.getElementById('editImageFile').value = '';
+  const preview = document.getElementById('editImagePreview');
+  preview.src = book.image;
+  preview.style.display = 'block'; 
+
+  document.getElementById("editForm").style.display = "block";
+}
+
+
+function saveEdit() {
+  const title = document.getElementById('editTitle').value;
+  const author = document.getElementById('editAuthor').value;
+  const genre = document.getElementById('editGenre').value;
+  const status = document.getElementById('editStatus').value;
+  const favorite = document.getElementById('editFavorite').checked;
+  const fileInput = document.getElementById('editImageFile');
+  const file = fileInput.files[0];
+
+  const updateBook = (image) => {
+    books[editingIndex] = { ...books[editingIndex], title, author, genre, status, image, favorite };
+    saveBooksToLocalStorage();
     renderBooks();
+    cancelEdit();
+  };
+
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = () => updateBook(reader.result);
+    reader.readAsDataURL(file);
+  } else {
+    updateBook(books[editingIndex].image);
   }
-} // Save books to localStorage whenever a book is edited
+}
+
+function cancelEdit() {
+  document.getElementById("editForm").style.display = "none";
+}
 
 function deleteBook(index) {
   books.splice(index, 1);
-  saveBooksToLocalStorage(); // Save to localStorage
+  saveBooksToLocalStorage(); 
   renderBooks();
 } // Save books to localStorage whenever a book is deleted
 
