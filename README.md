@@ -2,6 +2,9 @@
 
 ![Book Management System](./project_look.JPG)
 
+## Online via 
+https://dorahnaks.github.io/javascript_project/
+
 ## Overview
 The Book Management System is a comprehensive web application tailored for efficient book collection management. Designed for librarians, book lovers, and personal library owners, it simplifies cataloging, searching, and maintaining books. With a responsive design and user-friendly interface, it ensures a seamless experience on any device.
 
@@ -15,7 +18,6 @@ The Book Management System is a comprehensive web application tailored for effic
 - **Backend**: JavaScript
 - **Database**: localStorage API
 
-## Online via 
-https://dorahnaks.github.io/javascript_project/
+
 
 
