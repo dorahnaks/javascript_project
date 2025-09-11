@@ -15,3 +15,5 @@ The Book Management System is a comprehensive web application tailored for effic
 - **Backend**: JavaScript
 - **Database**: localStorage API
 
+## Online via https://dorahnaks.github.io/javascript_project/
+
